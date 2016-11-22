@@ -1,5 +1,7 @@
 "use strict";
 
+var webpack = require('webpack');
+
 /**
  * To learn more about how to use Easy Webpack
  * Take a look at the README here: https://github.com/easy-webpack/core
@@ -20,12 +22,15 @@ const outDir = path.resolve('dist');
 
 const coreBundles = {
   bootstrap: [
+    
     'aurelia-bootstrapper-webpack',
     'aurelia-polyfills',
     'aurelia-pal',
     'aurelia-pal-browser',
     'regenerator-runtime',
-    'bluebird'
+    'bluebird',
+    //new webpack.PrefetchPlugin('materialize-css'),
+    
   ],
   // these will be included in the 'aurelia' bundle (except for the above bootstrap packages)
   aurelia: [
@@ -57,9 +62,10 @@ const coreBundles = {
 
 const baseConfig = {
   entry: {
-    'app': [/* this is filled by the aurelia-webpack-plugin */],
+    
     'aurelia-bootstrap': coreBundles.bootstrap,
-    'aurelia': coreBundles.aurelia.filter(pkg => coreBundles.bootstrap.indexOf(pkg) === -1)
+    'aurelia': coreBundles.aurelia.filter(pkg => coreBundles.bootstrap.indexOf(pkg) === -1),
+    'app': [/* this is filled by the aurelia-webpack-plugin */],
   },
   output: {
     path: outDir,
@@ -162,5 +168,10 @@ switch (ENV) {
     );
     break;
 }
+
+config.resolve.alias = {
+  '$': path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js'),
+  'jquery': path.resolve(__dirname, 'node_modules/jquery/dist/jquery.js')
+};
 
 module.exports = config;

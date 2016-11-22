@@ -5,6 +5,7 @@ export class NavBar {
   @bindable router = null;
 
   attached() {
+    //alert('hhhh');
     //$('.button-collapse').sideNav();
   }
 }
