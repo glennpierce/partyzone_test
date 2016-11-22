@@ -1,18 +1,8 @@
 <template bindable="router">
 
-<a md-sidenav-collapse="ref.bind: sideNav;" md-button md-waves>Toggle SideNav</a>
-  <md-sidenav view-model.ref="sideNav">
-    <ul>
-      <li md-waves><a href="#">About</a></li>
-      <li md-waves><a href="#">Installation</a></li>
-      <li md-waves><a href="#">Project Status</a></li>
-      <li md-waves><a href="#">Help/Docs</a></li>
-    </ul>
-  </md-sidenav>
-
     <md-navbar md-fixed="true">
       <a md-sidenav-collapse="ref.bind: sideNavLeft;" md-button md-waves>Toggle SideNav</a>
-        <a md-sidenav-collapse="ref.bind: sideNav;" class="left hide-on-large-only" style="cursor: pointer; padding: 0 10px;"><i class="material-icons">menu</i></a>
+
         <ul class="hide-on-med-and-down left">
           <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
               <a href.bind="row.href">${row.title}</a>
@@ -20,15 +10,14 @@
           <li><a href="sass.html"><i class="material-icons">search</i></a></li>
         </ul>
 
-        <md-sidenav view-model.ref="sideNav">
-          <ul>
-            <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                <a href.bind="row.href">${row.title}</a>
-            </li>
-          </ul>
-        </md-sidenav>
+      
+      
 
-        <md-sidenav view-model.ref="sideNavLeft">
+
+    </md-navbar>
+
+
+      <md-sidenav id="sidebar1" view-model.ref="sideNavLeft">
     <ul>
       <li md-waves><a>About</a></li>
       <li md-waves><a>Installation</a></li>
@@ -37,6 +26,5 @@
     </ul>
   </md-sidenav>
 
-
-    </md-navbar>
+  
 </template>

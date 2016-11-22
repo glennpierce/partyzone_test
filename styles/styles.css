@@ -2,6 +2,14 @@ body {
   margin: 0;
 }
 
+#sidenav-overlay {
+  z-index: 998;
+}
+
+#sidebar1 {
+  z-index: 998;
+}
+
 .splash {
   text-align: center;
   margin: 10% 0 0 0;
